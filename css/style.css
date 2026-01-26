@@ -1,0 +1,7 @@
+body { font-family: Khmer OS, Arial; background:#f2f2f7; margin:0; }
+nav { background:#6a1b9a; padding:12px; text-align:center; }
+nav a { color:#fff; margin:0 10px; text-decoration:none; }
+section { background:#fff; margin:30px auto; padding:25px;
+max-width:900px; border-radius:10px; }
+#bar { background:#ddd; height:20px; border-radius:10px; }
+#fill { background:#6a1b9a; height:20px; width:0%; border-radius:10px; }
