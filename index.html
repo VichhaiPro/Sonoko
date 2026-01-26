@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Small Group Romans Study</title>
+
+<style>
+body {
+  font-family: 'Khmer OS', 'Segoe UI', Arial, sans-serif;
+  margin:0;
+  background:#f2f2f7;
+  color:#333;
+}
+
+/* ===== MENU BAR ===== */
+nav {
+  position:sticky;
+  top:0;
+  z-index:999;
+  background:#6a1b9a;
+  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+}
+nav ul {
+  list-style:none;
+  margin:0;
+  padding:0;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+nav li {
+  margin:0;
+}
+nav a {
+  display:block;
+  padding:14px 18px;
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+}
+nav a:hover {
+  background:#8e24aa;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  max-width:950px;
+  margin:40px auto;
+  padding:30px;
+  background:#fff;
+  border-radius:12px;
+  box-shadow:0 10px 25px rgba(0,0,0,0.08);
+}
+h2 {
+  color:#6a1b9a;
+  text-align:center;
+}
+
+/* ===== TABLE & PROGRESS ===== */
+table {
+  width:100%;
+  border-collapse:collapse;
+}
+th, td {
+  border:1px solid #ddd;
+  padding:10px;
+}
+th {
+  background:#6a1b9a;
+  color:#fff;
+}
+input[type=checkbox] {
+  transform:scale(1.2);
+}
+
+#progress-container {
+  background:#ddd;
+  border-radius:12px;
+  height:25px;
+  margin-bottom:20px;
+}
+#progress {
+  height:25px;
+  width:0%;
+  background:#6a1b9a;
+  border-radius:12px;
+  text-align:center;
+  color:#fff;
+  line-height:25px;
+}
+
+/* ===== SHARE ===== */
+.share-btn {
+  background:#4267B2;
+  color:#fff;
+  padding:12px 22px;
+  border-radius:8px;
+  text-decoration:none;
+  display:inline-block;
+}
+</style>
+</head>
+
+<body>
+
+<!-- ===== MENU ===== -->
+<nav>
+  <ul>
+    <li><a href="#agenda">📋 អ្នកដឹកនាំ</a></li>
+    <li><a href="#bible">📖 អានព្រះគម្ពីរ</a></li>
+    <li><a href="#discussion">💬 ពិភាក្សា</a></li>
+    <li><a href="#progress">✅ 16 សប្តាហ៍</a></li>
+    <li><a href="#share">📢 ចែករំលែក</a></li>
+  </ul>
+</nav>
+
+<!-- ===== LEADER AGENDA ===== -->
+<section id="agenda">
+<h2>📝 កម្មវិធីសម្រាប់អ្នកដឹកនាំ</h2>
+<ol>
+  <li>ស្វាគមន៍ និងអធិស្ឋានបើក</li>
+  <li>អានព្រះគម្ពីរ (Romans)</li>
+  <li>ដឹកនាំសំណួរពិភាក្សា</li>
+  <li>គូស ✓ សប្តាហ៍ដែលបានចប់</li>
+  <li>ប្រកាសអ្នកដឹកនាំសប្តាហ៍ក្រោយ</li>
+</ol>
+</section>
+
+<!-- ===== BIBLE READING ===== -->
+<section id="bible">
+<h2>📖 ព្រះគម្ពីរ រ៉ូម – ភាសាខ្មែរ</h2>
+<iframe
+  src="https://www.bible.com/km/bible/196/ROM.3.KHCB"
+  width="100%" height="600"
+  style="border:1px solid #ddd;border-radius:8px;">
+</iframe>
+</section>
+
+<!-- ===== DISCUSSION ===== -->
+<section id="discussion">
+<h2>💬 សំណួរពិភាក្សា (Romans 3)</h2>
+<ol>
+  <li>ហេតុអ្វីមនុស្សទាំងអស់ត្រូវការការសង្គ្រោះ?</li>
+  <li>សុចរិតដោយជំនឿ មានន័យដូចម្តេច?</li>
+  <li>តើការជំនឿ ប្រែប្រួលជីវិតអ្នកយ៉ាងដូចម្តេច?</li>
+</ol>
+</section>
+
+<!-- ===== WEEKLY PROGRESS ===== -->
+<section id="progress">
+<h2>✅ ការរីកចម្រើន 16 សប្តាហ៍</h2>
+
+<div id="progress-container">
+  <div id="progress">0%</div>
+</div>
+
+<table>
+<tr><th>សប្តាហ៍</th><th>អ្នកដឹកនាំ</th><th>ចប់</th></tr>
+<tr><td>Week 1 – Romans 1</td><td>Bonthoeurn</td><td align="center"><input type="checkbox" class="chk"></td></tr>
+<tr><td>Week 2 – Romans 2</td><td>David</td><td align="center"><input type="checkbox" class="chk"></td></tr>
+<tr><td>Week 3 – Romans 3</td><td>Vichhai</td><td align="center"><input type="checkbox" class="chk"></td></tr>
+<tr><td>Week 4 – Romans 4</td><td>Lai</td><td align="center"><input type="checkbox" class="chk"></td></tr>
+<!-- continue until week 16 -->
+</table>
+</section>
+
+<!-- ===== SHARE ===== -->
+<section id="share" style="text-align:center;">
+<h2>📢 ចែករំលែកក្រុមសិក្សា</h2>
+<a class="share-btn"
+href="https://www.facebook.com/sharer/sharer.php?u=YOUR_PAGE_URL"
+target="_blank">ចែករំលែក Facebook</a>
+</section>
+
+<script>
+const checks = document.querySelectorAll('.chk');
+const bar = document.getElementById('progress');
+
+function update() {
+  let done = 0;
+  checks.forEach((c,i)=>{
+    if(c.checked) done++;
+    localStorage.setItem('week'+i, c.checked);
+  });
+  let percent = Math.round((done / checks.length) * 100);
+  bar.style.width = percent + '%';
+  bar.textContent = percent + '%';
+}
+
+checks.forEach((c,i)=>{
+  c.checked = localStorage.getItem('week'+i) === 'true';
+  c.addEventListener('change', update);
+});
+update();
+</script>
+
+</body>
+</html>
