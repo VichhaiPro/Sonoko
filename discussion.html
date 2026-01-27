@@ -53,6 +53,47 @@
     </button>
   </div>
 </section>
+  
+<section id="meeting-note-board" style="margin:40px auto; max-width:900px;">
+  <h2>🙏📝 Meeting Notes & Prayer Requests</h2>
+  <p style="color:#555;">
+    Use this space to write prayer requests or important points during the meeting.
+  </p>
+
+  <textarea
+    id="meetingNote"
+    placeholder="• Prayer request\n• Key sharing point\n• Testimony\n• Follow-up..."
+    style="width:100%; min-height:180px; padding:12px; font-size:15px;"
+    oninput="saveMeetingNote()"
+  ></textarea>
+
+  <div style="margin-top:10px;">
+    <button onclick="clearMeetingNote()" style="padding:8px 14px; cursor:pointer;">
+      🗑️ Clear Notes
+    </button>
+  </div>
+</section>
+<script>
+function saveMeetingNote() {
+  const note = document.getElementById("meetingNote").value;
+  localStorage.setItem("meetingNote", note);
+}
+
+function loadMeetingNote() {
+  const saved = localStorage.getItem("meetingNote");
+  if (saved) {
+    document.getElementById("meetingNote").value = saved;
+  }
+}
+
+function clearMeetingNote() {
+  if (!confirm("Clear meeting notes and prayer requests?")) return;
+  localStorage.removeItem("meetingNote");
+  document.getElementById("meetingNote").value = "";
+}
+
+window.addEventListener("load", loadMeetingNote);
+</script>
 
 
 
