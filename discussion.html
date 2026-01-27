@@ -1,4 +1,4 @@
-
+d
 <!DOCTYPE html>
 <html lang="km">
 <head>
@@ -104,7 +104,7 @@
     <button onclick="clearMeetingNote()" style="margin-top:8px;">🗑️ Clear Notes</button>
   </div>
 </section>
-
+<section>
 <h2>📝 Discussion Notes</h2>
 
 <textarea id="discussionNote" placeholder="Write key discussion points..."
@@ -113,6 +113,7 @@ style="width:100%; min-height:120px;"></textarea>
 <button onclick="saveDiscussion()">💾 Save</button>
 
 <ul id="discussionList"></ul>
+</section>
 <script>
 function saveDiscussion() {
   const text = document.getElementById("discussionNote").value;
@@ -134,7 +135,7 @@ database.ref("discussion").on("value", snapshot => {
   });
 });
 </script>
-
+<section>
 <h2>🙏 Prayer Requests</h2>
 
 <input id="prayerName" placeholder="Name">
@@ -144,7 +145,7 @@ style="width:100%; min-height:80px;"></textarea>
 <button onclick="addPrayer()">🙏 Add Prayer</button>
 
 <ul id="prayerList"></ul>
-
+</section>
 <script>
 function addPrayer() {
   const name = prayerName.value;
