@@ -31,19 +31,17 @@
   </ul>
 </section>
   
-<section style="max-width:1000px; margin:50px auto; text-align:center;">
-  <h2>📸 Bible Verses for Meditation</h2>
-
+<section class="slider-section">
+  <h2>📸 Bible Verses & Reflections</h2>
   <div class="slider">
-    <img src="images/verse1.jpg" class="slide active">
-    <img src="images/verse2.jpg" class="slide">
-    <img src="images/verse3.jpg" class="slide">
+    <img src="https://images.unsplash.com/photo-1544551763-5b66bb7b1c79" class="slide active">
+    <img src="https://images.unsplash.com/photo-1529973565450-c9df10d694d5" class="slide">
+    <img src="https://images.unsplash.com/photo-1518481612486-9c3d8d7bb805" class="slide">
+    <img src="https://images.unsplash.com/photo-1518128954545-2ee313e1cc99" class="slide">
   </div>
-
-  <p id="verseText" style="margin-top:15px; font-size:18px; font-style:italic;">
-    “The righteous shall live by faith.” – Romans 1:17
-  </p>
+  <p id="verseText">“The righteous shall live by faith.” – Romans 1:17</p>
 </section>
+
 <style>
 .slider {
   position: relative;
@@ -68,21 +66,13 @@
 
 
 <script>
-const slides = document.querySelectorAll(".slide");
 const verses = [
   "“The righteous shall live by faith.” – Romans 1:17",
   "“All have sinned and fall short of the glory of God.” – Romans 3:23",
-  "“There is now no condemnation for those in Christ Jesus.” – Romans 8:1"
+  "“There is therefore now no condemnation for those in Christ Jesus.” – Romans 8:1",
+  "“Be transformed by the renewal of your mind.” – Romans 12:2"
 ];
 
-let index = 0;
-
-setInterval(() => {
-  slides[index].classList.remove("active");
-  index = (index + 1) % slides.length;
-  slides[index].classList.add("active");
-  document.getElementById("verseText").innerText = verses[index];
-}, 4000);
 </script>
 
 
