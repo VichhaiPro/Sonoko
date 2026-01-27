@@ -60,6 +60,30 @@
 
 </section>
 
+<table id="calendar">
+  <tr>
+    <th>Date</th>
+    <th>Leader</th>
+  </tr>
+  <tr>
+    <td>2026-02-04</td>
+    <td><button onclick="openAgenda('2026-02-04','Vichhai','Romans 1')">Vichhai</button></td>
+  </tr>
+  <tr>
+    <td>2026-02-11</td>
+    <td><button onclick="openAgenda('2026-02-11','Lai','Romans 2')">Lai</button></td>
+  </tr>
+  <tr>
+    <td>2026-02-18</td>
+    <td><button onclick="openAgenda('2026-02-18','Bonthoeurn','Romans 3')">Bonthoeurn</button></td>
+  </tr>
+  <tr>
+    <td>2026-02-25</td>
+    <td>No Meeting</td>
+  </tr>
+</table>
+
+
 <script>
 function openAgenda(date, leader, chapter) {
   // Save info to localStorage so agenda.html can read it
