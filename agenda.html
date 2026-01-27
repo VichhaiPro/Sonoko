@@ -14,14 +14,79 @@
 <a href="discussion.html">💬 ពិភាក្សា</a>
 <a href="calendar.html">✅ 16 សប្តាហ៍</a>
 </nav>
-<section>
-<h2>📝 កម្មវិធីអ្នកដឹកនាំ</h2>
-<ol>
-<li>ស្វាគមន៍ និងអធិស្ឋាន</li>
-<li>អានព្រះគម្ពីរ</li>
-<li>ពិភាក្សា</li>
-<li>Tick Progress</li>
-</ol>
+<section id="agenda" style="max-width:900px; margin:40px auto; font-family:Arial, sans-serif; line-height:1.6;">
+
+  <h2 style="text-align:center;">📋 Small Group Agenda</h2>
+
+  <!-- Date & Leader -->
+  <div style="margin-bottom:20px;">
+    <label><strong>Date:</strong></label>
+    <input type="date" id="agendaDate">
+
+    <label style="margin-left:15px;"><strong>Leader:</strong></label>
+    <select id="agendaLeader">
+      <option value="">Select Leader</option>
+      <option value="Lai">Lai</option>
+      <option value="Bonthoeurn">Bonthoeurn</option>
+      <option value="David">David</option>
+      <option value="Vichhai">Vichhai</option>
+    </select>
+  </div>
+
+  <!-- Meeting Theme -->
+  <div style="margin-bottom:20px;">
+    <label><strong>Theme / Scripture:</strong></label>
+    <input type="text" id="agendaTheme" placeholder="Romans 3:1-31, Justification by Faith" style="width:100%; padding:6px; margin-top:5px;">
+  </div>
+
+  <!-- Step-by-Step Agenda -->
+  <h3>📝 Agenda Steps</h3>
+  <ol>
+    <li><strong>Welcome & Icebreaker:</strong> (5 min)</li>
+    <li><strong>Prayer:</strong> (5 min) - Personal prayer requests or group prayer</li>
+    <li><strong>Bible Reading:</strong> Read Romans Chapter <span id="chapterDisplay">3</span></li>
+    <li><strong>Discussion Questions:</strong> <a href="discussion.html" target="_blank">Go to Discussion</a></li>
+    <li><strong>Key Points / Insights:</strong> Leader shares highlights from chapter</li>
+    <li><strong>Action / Application:</strong> How to apply in daily life</li>
+    <li><strong>Closing Prayer & Praise:</strong> Encourage sharing</li>
+  </ol>
+
+  <!-- Leader Notes -->
+  <div style="margin-top:20px;">
+    <h3>🖊️ Leader Notes</h3>
+    <textarea id="leaderNotes" placeholder="Add reminders, tips, or important points for this meeting..." style="width:100%; min-height:150px; padding:10px;"></textarea>
+    <button onclick="clearLeaderNotes()" style="margin-top:5px;">🗑️ Clear Notes</button>
+  </div>
+
 </section>
+
+  <script>
+const agendaDate = document.getElementById("agendaDate");
+const agendaLeader = document.getElementById("agendaLeader");
+const agendaTheme = document.getElementById("agendaTheme");
+const leaderNotes = document.getElementById("leaderNotes");
+
+// Load saved data
+window.onload = () => {
+  agendaDate.value = localStorage.getItem("agendaDate") || "";
+  agendaLeader.value = localStorage.getItem("agendaLeader") || "";
+  agendaTheme.value = localStorage.getItem("agendaTheme") || "";
+  leaderNotes.value = localStorage.getItem("leaderNotes") || "";
+};
+
+// Auto-save
+agendaDate.oninput = () => localStorage.setItem("agendaDate", agendaDate.value);
+agendaLeader.onchange = () => localStorage.setItem("agendaLeader", agendaLeader.value);
+agendaTheme.oninput = () => localStorage.setItem("agendaTheme", agendaTheme.value);
+leaderNotes.oninput = () => localStorage.setItem("leaderNotes", leaderNotes.value);
+
+// Clear notes
+function clearLeaderNotes() {
+  if(!confirm("Clear leader notes?")) return;
+  leaderNotes.value = "";
+  localStorage.removeItem("leaderNotes");
+}
+</script>
+
 </body>
 </html>
