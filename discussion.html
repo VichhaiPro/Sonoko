@@ -7,20 +7,7 @@
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
-<script>
-const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-};
-
-firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
-</script>
 
 <nav>
 <a href="index.html">🏠 Home</a>
@@ -118,6 +105,72 @@ const database = firebase.database();
   </div>
 </section>
 
+<h2>📝 Discussion Notes</h2>
+
+<textarea id="discussionNote" placeholder="Write key discussion points..."
+style="width:100%; min-height:120px;"></textarea>
+
+<button onclick="saveDiscussion()">💾 Save</button>
+
+<ul id="discussionList"></ul>
+<script>
+function saveDiscussion() {
+  const text = document.getElementById("discussionNote").value;
+  if (!text) return alert("Write something first");
+
+  database.ref("discussion").push({
+    text: text,
+    time: new Date().toLocaleString()
+  });
+
+  document.getElementById("discussionNote").value = "";
+}
+
+database.ref("discussion").on("value", snapshot => {
+  const list = document.getElementById("discussionList");
+  list.innerHTML = "";
+  snapshot.forEach(item => {
+    list.innerHTML += `<li>📌 ${item.val().text} <br><small>${item.val().time}</small></li>`;
+  });
+});
+</script>
+
+<h2>🙏 Prayer Requests</h2>
+
+<input id="prayerName" placeholder="Name">
+<textarea id="prayerText" placeholder="Prayer request..."
+style="width:100%; min-height:80px;"></textarea>
+
+<button onclick="addPrayer()">🙏 Add Prayer</button>
+
+<ul id="prayerList"></ul>
+
+<script>
+function addPrayer() {
+  const name = prayerName.value;
+  const text = prayerText.value;
+  if (!text) return;
+
+  database.ref("prayers").push({
+    name: name || "Anonymous",
+    text: text,
+    time: new Date().toLocaleString()
+  });
+
+  prayerText.value = "";
+}
+
+database.ref("prayers").on("value", snapshot => {
+  prayerList.innerHTML = "";
+  snapshot.forEach(item => {
+    const p = item.val();
+    prayerList.innerHTML += `
+      <li>🙏 <strong>${p.name}</strong>: ${p.text}
+      <br><small>${p.time}</small></li>`;
+  });
+});
+</script>
+
 <script>
 function saveMeta() {
   localStorage.setItem("meetingDate", meetingDate.value);
@@ -189,6 +242,20 @@ window.onload = loadAll;
 
 
 
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+
+<script>
+const firebaseConfig = {
+  apiKey: "YOUR_API_KEY",
+  authDomain: "YOUR_PROJECT.firebaseapp.com",
+  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
+  projectId: "YOUR_PROJECT",
+};
+
+firebase.initializeApp(firebaseConfig);
+const database = firebase.database();
+</script>
 
 
 </body>
