@@ -15,3 +15,22 @@ checks.forEach((c,i)=>{
  c.addEventListener('change',update);
 });
 update();
+
+<script>
+let slides = document.querySelectorAll('.slide');
+let index = 0;
+
+setInterval(()=>{
+  slides[index].classList.remove('active');
+  index = (index + 1) % slides.length;
+  slides[index].classList.add('active');
+}, 4000);
+
+// Lightbox
+slides.forEach(slide=>{
+  slide.querySelector('img').onclick = e =>{
+    document.getElementById('lightbox-img').src = e.target.src;
+    document.getElementById('lightbox').style.display = 'flex';
+  }
+});
+</script>
