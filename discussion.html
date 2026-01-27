@@ -104,14 +104,7 @@
       return;
     }
 
-    const note = { date, leader, text };
-    let notes = JSON.parse(localStorage.getItem("groupNotes")) || [];
-    notes.push(note);
-    localStorage.setItem("groupNotes", JSON.stringify(notes));
-
-    document.getElementById("noteText").value = "";
-    loadNotes();
-  }
+    
 
  
 function loadNotes() {
