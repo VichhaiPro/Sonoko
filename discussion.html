@@ -62,15 +62,20 @@
     <input type="date" id="noteDate" style="padding:8px; width:200px;">
   </div>
 
-  <div style="margin-bottom:15px;">
-    <label><strong>Leader:</strong></label><br>
-    <select id="noteLeader" style="padding:8px; width:220px;">
-      <option value="Vichhai">Vichhai</option>
-      <option value="Lai">Lai</option>
-      <option value="Bonthoeurn">Bonthoeurn</option>
-      <option value="David">David</option>
-    </select>
-  </div>
+ <div style="margin-bottom:15px;">
+  <label><strong>Filter by Leader:</strong></label>
+  <select id="filterLeader" onchange="loadNotes()" style="padding:6px;">
+    <option value="">All</option>
+    <option value="Vichhai">Vichhai</option>
+    <option value="Lai">Lai</option>
+    <option value="Bonthoeurn">Bonthoeurn</option>
+    <option value="David">David</option>
+  </select>
+
+  <label style="margin-left:15px;"><strong>Date:</strong></label>
+  <input type="date" id="filterDate" onchange="loadNotes()" style="padding:6px;">
+</div>
+
 
   <div style="margin-bottom:15px;">
     <label><strong>Notes / Prayer / Sharing:</strong></label><br>
@@ -108,22 +113,46 @@
     loadNotes();
   }
 
-  function loadNotes() {
-    const notes = JSON.parse(localStorage.getItem("groupNotes")) || [];
-    const container = document.getElementById("savedNotes");
-    container.innerHTML = "";
+ 
+function loadNotes() {
+  const notes = JSON.parse(localStorage.getItem("groupNotes")) || [];
+  const leaderFilter = document.getElementById("filterLeader")?.value || "";
+  const dateFilter = document.getElementById("filterDate")?.value || "";
 
-    notes.forEach((n, i) => {
-      container.innerHTML += `
-        <div style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
-          <strong>📅 ${n.date}</strong> | 👤 ${n.leader}
-          <p style="margin-top:10px;">${n.text}</p>
-        </div>
-      `;
-    });
-  }
+  const container = document.getElementById("savedNotes");
+  container.innerHTML = "";
 
+  notes.forEach((n, index) => {
+    if (
+      (leaderFilter && n.leader !== leaderFilter) ||
+      (dateFilter && n.date !== dateFilter)
+    ) {
+      return;
+    }
+
+    container.innerHTML += `
+      <div style="border:1px solid #ccc; padding:15px; margin-bottom:10px;">
+        <strong>📅 ${n.date}</strong> | 👤 ${n.leader}
+        <p style="margin-top:10px;">${n.text}</p>
+
+        <button onclick="deleteNote(${index})"
+          style="margin-top:10px; padding:5px 10px; cursor:pointer;">
+          🗑️ Delete
+        </button>
+      </div>
+    `;
+  });
+}
+function deleteNote(index) {
+  if (!confirm("Delete this note?")) return;
+
+  let notes = JSON.parse(localStorage.getItem("groupNotes")) || [];
+  notes.splice(index, 1);
+  localStorage.setItem("groupNotes", JSON.stringify(notes));
   loadNotes();
+}
+
+
 </script>
 
 </body>
