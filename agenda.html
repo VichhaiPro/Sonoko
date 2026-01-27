@@ -60,41 +60,9 @@
 
 </section>
 
-<table id="calendar">
-  <tr>
-    <th>Date</th>
-    <th>Leader</th>
-  </tr>
-  <tr>
-    <td>2026-02-04</td>
-    <td><button onclick="openAgenda('2026-02-04','Vichhai','Romans 1')">Vichhai</button></td>
-  </tr>
-  <tr>
-    <td>2026-02-11</td>
-    <td><button onclick="openAgenda('2026-02-11','Lai','Romans 2')">Lai</button></td>
-  </tr>
-  <tr>
-    <td>2026-02-18</td>
-    <td><button onclick="openAgenda('2026-02-18','Bonthoeurn','Romans 3')">Bonthoeurn</button></td>
-  </tr>
-  <tr>
-    <td>2026-02-25</td>
-    <td>No Meeting</td>
-  </tr>
-</table>
 
 
-<script>
-function openAgenda(date, leader, chapter) {
-  // Save info to localStorage so agenda.html can read it
-  localStorage.setItem("agendaDate", date);
-  localStorage.setItem("agendaLeader", leader);
-  localStorage.setItem("agendaTheme", chapter);
 
-  // Open agenda.html in new tab
-  window.open("agenda.html", "_blank");
-}
-</script>
 
 <script>
 const agendaDate = document.getElementById("agendaDate");
@@ -121,15 +89,8 @@ function clearLeaderNotes() {
   if(!confirm("Clear leader notes?")) return;
   leaderNotes.value = "";
   localStorage.removeItem("leaderNotes");
-};
+}
 
-window.onload = () => {
-  // Load from calendar link or localStorage
-  agendaDate.value = localStorage.getItem("agendaDate") || "";
-  agendaLeader.value = localStorage.getItem("agendaLeader") || "";
-  agendaTheme.value = localStorage.getItem("agendaTheme") || "";
-  leaderNotes.value = localStorage.getItem("leaderNotes") || "";
-};
 </script>
 
 </body>
