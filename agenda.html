@@ -60,7 +60,19 @@
 
 </section>
 
-  <script>
+<script>
+function openAgenda(date, leader, chapter) {
+  // Save info to localStorage so agenda.html can read it
+  localStorage.setItem("agendaDate", date);
+  localStorage.setItem("agendaLeader", leader);
+  localStorage.setItem("agendaTheme", chapter);
+
+  // Open agenda.html in new tab
+  window.open("agenda.html", "_blank");
+}
+</script>
+
+<script>
 const agendaDate = document.getElementById("agendaDate");
 const agendaLeader = document.getElementById("agendaLeader");
 const agendaTheme = document.getElementById("agendaTheme");
