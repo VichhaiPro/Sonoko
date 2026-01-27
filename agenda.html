@@ -85,7 +85,15 @@ function clearLeaderNotes() {
   if(!confirm("Clear leader notes?")) return;
   leaderNotes.value = "";
   localStorage.removeItem("leaderNotes");
-}
+};
+
+window.onload = () => {
+  // Load from calendar link or localStorage
+  agendaDate.value = localStorage.getItem("agendaDate") || "";
+  agendaLeader.value = localStorage.getItem("agendaLeader") || "";
+  agendaTheme.value = localStorage.getItem("agendaTheme") || "";
+  leaderNotes.value = localStorage.getItem("leaderNotes") || "";
+};
 </script>
 
 </body>
