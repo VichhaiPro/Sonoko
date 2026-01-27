@@ -65,15 +65,32 @@
 </style>
 
 
+
+
 <script>
+const slides = document.querySelectorAll(".slide");
 const verses = [
+  "“The righteous shall live by faith.” – Romans 1:17",
+  "“All have sinned and fall short of the glory of God.” – Romans 3:23",
+  "“There is now no condemnation for those in Christ Jesus.” – Romans 8:1"
+];
+
+  const verses = [
   "“The righteous shall live by faith.” – Romans 1:17",
   "“All have sinned and fall short of the glory of God.” – Romans 3:23",
   "“There is therefore now no condemnation for those in Christ Jesus.” – Romans 8:1",
   "“Be transformed by the renewal of your mind.” – Romans 12:2"
 ];
+let index = 0;
 
+setInterval(() => {
+  slides[index].classList.remove("active");
+  index = (index + 1) % slides.length;
+  slides[index].classList.add("active");
+  document.getElementById("verseText").innerText = verses[index];
+}, 4000);
 </script>
+
 
 
 
