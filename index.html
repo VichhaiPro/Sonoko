@@ -14,112 +14,77 @@
 <a href="discussion.html">💬 ពិភាក្សា</a>
 <a href="calendar.html">✅ 16 សប្តាហ៍</a>
 </nav>
-<section>
-<section class="gallery-section">
-  <h2>🙏 ការជួបជុំអធិស្ឋាន និងចែករំលែកព្រះបន្ទូល</h2>
-  <p class="gallery-sub">Small Group Romans • Pray • Share • Grow Together</p>
+  
+<section style="max-width:1000px; margin:40px auto;">
+  <h2>📖 Book of Romans – Study Overview</h2>
+
+  <ul style="line-height:1.8; font-size:16px;">
+    <li><strong>Romans 1:</strong> The power of the Gospel</li>
+    <li><strong>Romans 2:</strong> God’s righteous judgment</li>
+    <li><strong>Romans 3:</strong> Justification by faith</li>
+    <li><strong>Romans 4:</strong> Faith of Abraham</li>
+    <li><strong>Romans 5:</strong> Peace with God through Christ</li>
+    <li><strong>Romans 6:</strong> Dead to sin, alive in Christ</li>
+    <li><strong>Romans 7:</strong> Struggle with sin</li>
+    <li><strong>Romans 8:</strong> Life in the Spirit</li>
+    <li><strong>Romans 12:</strong> Living sacrifice</li>
+  </ul>
+</section>
+  
+<section style="max-width:1000px; margin:50px auto; text-align:center;">
+  <h2>📸 Bible Verses for Meditation</h2>
 
   <div class="slider">
-    <div class="slide active">
-      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e">
-      <div class="verse">« ដ្បិតមនុស្សត្រូវបានរាប់ជាសុចរិត ដោយសារជំនឿ »<br>– រ៉ូម 3:28</div>
-    </div>
-    <div class="slide">
-      <img src="https://images.unsplash.com/photo-1529070538774-1843cb3265df">
-      <div class="verse">« ព្រះបន្ទូលរបស់ព្រះជាជីវិត »<br>– រ៉ូម 1:16</div>
-    </div>
-    <div class="slide">
-      <img src="https://images.unsplash.com/photo-1515169067865-5387ec356754">
-      <div class="verse">« ចូរអធិស្ឋានដោយមិនឈប់ »<br>– រ៉ូម 12:12</div>
-    </div>
-    <div class="slide">
-      <img src="https://images.unsplash.com/photo-1509099836639-18ba1795216d">
-      <div class="verse">« ស្រឡាញ់គ្នាទៅវិញទៅមក »<br>– រ៉ូម 12:10</div>
-    </div>
+    <img src="images/verse1.jpg" class="slide active">
+    <img src="images/verse2.jpg" class="slide">
+    <img src="images/verse3.jpg" class="slide">
   </div>
+
+  <p id="verseText" style="margin-top:15px; font-size:18px; font-style:italic;">
+    “The righteous shall live by faith.” – Romans 1:17
+  </p>
 </section>
-
-<!-- Lightbox -->
-<div id="lightbox" onclick="this.style.display='none'">
-  <img id="lightbox-img">
-</div>
-
-</section>
-
 <style>
-.gallery-section{
-  max-width:1100px;
-  margin:40px auto;
-  text-align:center;
-}
-.gallery-section h2{color:#4a2c82;}
-.gallery-sub{color:#555;margin-bottom:20px;}
-
-.slider{
-  position:relative;
-  overflow:hidden;
-  border-radius:14px;
-}
-.slide{
-  display:none;
-  position:relative;
-}
-.slide.active{display:block;}
-.slide img{
-  width:100%;
-  height:360px;
-  object-fit:cover;
-  cursor:pointer;
-}
-.verse{
-  position:absolute;
-  bottom:20px;
-  left:50%;
-  transform:translateX(-50%);
-  background:rgba(0,0,0,.6);
-  color:#fff;
-  padding:12px 18px;
-  border-radius:10px;
-  font-size:15px;
-  max-width:90%;
+.slider {
+  position: relative;
+  height: 350px;
+  overflow: hidden;
+  border-radius: 10px;
 }
 
-/* Lightbox */
-#lightbox{
-  display:none;
-  position:fixed;
-  top:0;left:0;
-  width:100%;height:100%;
-  background:rgba(0,0,0,.85);
-  justify-content:center;
-  align-items:center;
-  z-index:999;
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 1s ease;
 }
-#lightbox img{
-  max-width:90%;
-  max-height:90%;
-  border-radius:12px;
+
+.slide.active {
+  opacity: 1;
 }
 </style>
 
+
 <script>
-let slides = document.querySelectorAll('.slide');
+const slides = document.querySelectorAll(".slide");
+const verses = [
+  "“The righteous shall live by faith.” – Romans 1:17",
+  "“All have sinned and fall short of the glory of God.” – Romans 3:23",
+  "“There is now no condemnation for those in Christ Jesus.” – Romans 8:1"
+];
+
 let index = 0;
 
-setInterval(()=>{
-  slides[index].classList.remove('active');
+setInterval(() => {
+  slides[index].classList.remove("active");
   index = (index + 1) % slides.length;
-  slides[index].classList.add('active');
+  slides[index].classList.add("active");
+  document.getElementById("verseText").innerText = verses[index];
 }, 4000);
-
-// Lightbox
-slides.forEach(slide=>{
-  slide.querySelector('img').onclick = e =>{
-    document.getElementById('lightbox-img').src = e.target.src;
-    document.getElementById('lightbox').style.display = 'flex';
-  }
-});
 </script>
+
 
 
 </body>
