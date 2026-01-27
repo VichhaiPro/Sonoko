@@ -100,71 +100,9 @@ input[type="checkbox"] { margin-right:10px; }
   .card { page-break-inside: avoid; box-shadow:none; border:none; }
 }
 </style>
-</head>
-<body>
 
-<h1>📅 Interactive Calendar – Romans Small Group</h1>
-<p style="text-align:center">🗓 រៀងរាល់ថ្ងៃអង្គារ | ⏰ 6:30 PM | ចាប់ផ្តើម 3 Feb 2026</p>
 
-<div id="calendar"></div>
 
-<script>
-// Define 16 weeks starting from Feb 3, 2026
-const weeks = [
-  {week:1, date:'2026-02-03', leader:'Lai', meet:true},
-  {week:2, date:'2026-02-10', leader:'Bonthoeurn', meet:true},
-  {week:3, date:'2026-02-17', leader:'David', meet:true},
-  {week:4, date:'2026-02-24', leader:'-', meet:false},
-  {week:5, date:'2026-03-03', leader:'Vichhai', meet:true},
-  {week:6, date:'2026-03-10', leader:'Lai', meet:true},
-  {week:7, date:'2026-03-17', leader:'Bonthoeurn', meet:true},
-  {week:8, date:'2026-03-24', leader:'-', meet:false},
-  {week:9, date:'2026-03-31', leader:'David', meet:true},
-  {week:10, date:'2026-04-07', leader:'Vichhai', meet:true},
-  {week:11, date:'2026-04-14', leader:'Lai', meet:true},
-  {week:12, date:'2026-04-21', leader:'-', meet:false},
-  {week:13, date:'2026-04-28', leader:'Bonthoeurn', meet:true},
-  {week:14, date:'2026-05-05', leader:'David', meet:true},
-  {week:15, date:'2026-05-12', leader:'Vichhai', meet:true},
-  {week:16, date:'2026-05-19', leader:'-', meet:false},
-];
-
-// Load saved checkboxes from localStorage
-const saved = JSON.parse(localStorage.getItem('meetDone')) || {};
-
-function renderCalendar() {
-  const container = document.getElementById('calendar');
-  const today = new Date().toISOString().split('T')[0];
-  container.innerHTML = '';
-  weeks.forEach(w => {
-    const card = document.createElement('div');
-    card.className = 'card';
-    if(w.date === today) card.classList.add('this-week');
-    
-    card.innerHTML = `
-      <div class="week-header">សប្ដាហ៍ ${w.week}</div>
-      <div class="date">${new Date(w.date).toLocaleDateString('km-KH', { weekday:'long', year:'numeric', month:'long', day:'numeric' })}</div>
-      <div class="leader">${w.meet ? 'អ្នកដឹកនាំ: '+w.leader : '<span class="no-meet">❌ មិនជួប</span>'}</div>
-      ${w.meet ? `<label class="checkbox-label">
-        <input type="checkbox" data-week="${w.week}" ${saved[w.week]?'checked':''}>
-        ធ្វើជួបរួចហើយ
-      </label>` : ''}
-    `;
-    container.appendChild(card);
-  });
-
-  // Add checkbox listener
-  document.querySelectorAll('input[type="checkbox"]').forEach(cb=>{
-    cb.addEventListener('change', e=>{
-      const weekNum = e.target.getAttribute('data-week');
-      saved[weekNum] = e.target.checked;
-      localStorage.setItem('meetDone', JSON.stringify(saved));
-    });
-  });
-}
-
-renderCalendar();
-</script>
 </body>
 </html>
 
