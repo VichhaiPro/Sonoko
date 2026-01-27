@@ -16,7 +16,6 @@ checks.forEach((c,i)=>{
 });
 update();
 
-<script>
 let slides = document.querySelectorAll('.slide');
 let index = 0;
 
@@ -33,4 +32,30 @@ slides.forEach(slide=>{
     document.getElementById('lightbox').style.display = 'flex';
   }
 });
-</script>
+
+
+function addPrayer() {
+  const name = prayerName.value;
+  const text = prayerText.value;
+  if (!text) return;
+
+  database.ref("prayers").push({
+    name: name || "Anonymous",
+    text: text,
+    time: new Date().toLocaleString()
+  });
+
+  prayerText.value = "";
+}
+
+database.ref("prayers").on("value", snapshot => {
+  prayerList.innerHTML = "";
+  snapshot.forEach(item => {
+    const p = item.val();
+    prayerList.innerHTML += `
+      <li>🙏 <strong>${p.name}</strong>: ${p.text}
+      <br><small>${p.time}</small></li>`;
+  });
+});
+
+
